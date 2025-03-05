@@ -12,7 +12,7 @@ docker build -t exe .
 To run the container:
 
 ```bash
-docker run -it -privileged -v /dev/bus/usb:/dev/bus/usb exe bash
+docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb exe bash
 ```
 
 Inside the container, use the makefile to build the project and after that,
@@ -40,7 +40,6 @@ And now you should see the device.
 Then you can upload the apk on the headset with the following command:
 
 ```bash
-adb install -r questxrexample.apk
 ```
 
 And finally, you can run the application with the following command:

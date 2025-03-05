@@ -8,7 +8,7 @@ all:
 	src/main.cpp deps/src/android_native_app_glue.c deps/lib/libopenxr_loader.so \
 	-L${ANDROID_LIBS_LINK} -s -lm -lGLESv3 -lEGL -landroid -llog \
 	-shared -uANativeActivity_onCreate \
-	-o build/lib/arm64-v8a/libquestxrexample.so \
+	-o build/lib/arm64-v8a/libexe.so \
 
 	@cp -r assets/ build/assets
 	@cp -r deps/lib/libopenxr_loader.so build/lib/arm64-v8a/
@@ -19,7 +19,7 @@ all:
 	jarsigner -sigalg SHA1withRSA -digestalg SHA1 -verbose -keystore debug.keystore \
   	-storepass android temp.apk androiddebugkey
 
-	${ZIPALIGN} -f -v 4 temp.apk questxrexample.apk
+	${ZIPALIGN} -f -v 4 temp.apk exe.apk
 
 
 clean:

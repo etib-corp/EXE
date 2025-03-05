@@ -26,7 +26,7 @@
 #include "android_native_app_glue.h"
 #include <android/log.h>
 
-#define APPNAME "questxrexample"
+#define APPNAME "exe"
 
 #define LOGI(...) ((void)printf(__VA_ARGS__))
 #define LOGE(...) ((void)printf(__VA_ARGS__))
@@ -279,7 +279,7 @@ static struct android_app* android_app_create(ANativeActivity* activity,
     pthread_cond_init(&android_app->cond, NULL);
 
 
-    pthread_attr_t attr; 
+    pthread_attr_t attr;
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
 

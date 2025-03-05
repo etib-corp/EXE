@@ -4,7 +4,7 @@
 #define GL_APICALL
 #endif
 
-#define APPNAME "questxrexample"
+#define APPNAME "exe"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // INCLUDES
@@ -94,7 +94,7 @@ void main() {
                 vec3(-0.1,  0.1, -0.1),
                 vec3( 0.1,  0.1, -0.1),
                 vec3( 0.1,  0.1,  0.1),
-                vec3(-0.1,  0.1,  0.1) 
+                vec3(-0.1,  0.1,  0.1)
         );
 
         const int cube_indices[36] = int[36](
@@ -103,7 +103,7 @@ void main() {
                 0, 1, 5, 0, 5, 4,
                 3, 6, 2, 3, 7, 6,
                 0, 4, 7, 0, 7, 3,
-                1, 2, 6, 1, 6, 5 
+                1, 2, 6, 1, 6, 5
         );
 
         int index = clamp(gl_VertexID, 0, 35);
@@ -460,7 +460,7 @@ void app_set_callbacks_and_wait(app_t *a, android_app *app) {
         a->app = app;
         app->userData = a;
         app->onAppCmd = app_android_handle_cmd;
-        
+
         int events;
         while (!a->is_window_init) {
                 struct android_poll_source *source;
@@ -953,7 +953,7 @@ void app_init_opengl_framebuffers(app_t *a) {
 
 // Compile the OpenGL shaders into programs
 void app_init_opengl_shaders(app_t *a) {
-        glEnable(GL_DEPTH_TEST);  
+        glEnable(GL_DEPTH_TEST);
 
         // Box Program
         uint32_t vert_shd = glCreateShader(GL_VERTEX_SHADER);
@@ -1307,7 +1307,7 @@ void app_update_render(app_t *a) {
                 matrix_rotation_from_quat(right_rotation, (float *)&a->hand_locations[1].pose.orientation);
                 matrix_multiply(right_model, right_translation, right_rotation);
                 matrix_multiply(right_mvp, view_proj, right_model);
-        
+
                 // Render into the swapchain directly
                 glBindFramebuffer(GL_FRAMEBUFFER, a->framebuffer);
                 glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, colour_tex, 0);
@@ -1327,7 +1327,7 @@ void app_update_render(app_t *a) {
                 glUniformMatrix4fv(0, 1, GL_FALSE, right_mvp);
                 glUniform2f(1, a->trigger_states[1].currentState, (float)(a->trigger_click_states[1].currentState));
                 glDrawArrays(GL_TRIANGLES, 0, 36);
-                
+
                 // Render Background
                 glUseProgram(a->background_program);
                 glUniformMatrix4fv(0, 1, GL_FALSE, view_proj);
